@@ -1,0 +1,14 @@
+{
+  "name": "des-patterns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/aopanasenko/des-patterns.git",
+  "author": "Andrey Opanasenko <aopanasenko@dclab.local>",
+  "license": "MIT",
+  "scripts": {
+    "dts": "tsc --p tsconfig.dts.json --declaration --emitDeclarationOnly --outDir ./lib/"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
