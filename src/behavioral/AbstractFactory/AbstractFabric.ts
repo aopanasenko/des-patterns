@@ -75,3 +75,6 @@ export class MachineIndustry {
         this.machine = this.factory.createCar(mark);
     }
 }
+
+const mercedesFactory = new MercedesFactory;
+const myMachineIndustry = new MachineIndustry(mercedesFactory);
