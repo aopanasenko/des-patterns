@@ -1,1 +1,1 @@
-export * from './behavioral';
+export * from './creational';
