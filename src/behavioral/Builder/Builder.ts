@@ -14,15 +14,14 @@ class Car {
 
 abstract class Builder {
     abstract reset(): void;
-    abstract setEngine(engine: string);
-    abstract setSeats(seats: number);
-    abstract setColor(color: string);
+    abstract setEngine(engine: string): void;
+    abstract setSeats(seats: number): void;
+    abstract setColor(color: string): void;
     abstract getResult(): Car;
 }
 
-class CarBuilder extends Builder {
+export class CarBuilder extends Builder {
     private car: Car;
-
 
     public reset(): void {
         this.car = new Car();
@@ -45,7 +44,7 @@ class CarBuilder extends Builder {
     }
 }
 
-class Director {
+export class Director {
     public constructJeep(builder: Builder) {
         builder.reset();
         builder.setEngine('V8');
