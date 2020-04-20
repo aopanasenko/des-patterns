@@ -68,7 +68,7 @@ roundHole.isCompatibleWithHole(roundPeg);
 
 const squarePeg = new SquarePeg(10);
 // Ошибка компиляции
-roundHole.isCompatibleWithHole(squarePeg);
+// roundHole.isCompatibleWithHole(squarePeg);
 
 // Создаем адаптер
 const adapter = new SquarePegAdapter(squarePeg);
