@@ -26,7 +26,7 @@ class FileClass {
 };
 
 // Создадим фасад
-class VideoConverter {
+export class VideoConverter {
     public convert(filename: string, format: string): FileClass {
         const file = new VideoFile();
 
