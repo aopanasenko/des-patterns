@@ -26,7 +26,7 @@ export class HouseFactory {
         return this.houseModels[houseModel];
     }
 
-    private addHouse(houseModel: string) {
+    private addHouse(houseModel: string): void {
         this.houseModels[houseModel] = new House(houseModel);
     }
 
