@@ -4,6 +4,8 @@
 
 export class Singleton {
     private static instance: Singleton;
+    // Скрываем, чтобы предотвратить вызов через new
+    private constructor() {}
 
     public static getInstance() {
         if (Singleton.instance === null) {
