@@ -4,3 +4,4 @@ export * from './Iterator';
 export * from './Mediator';
 export * from './Memento';
 export * from './Observer';
+export * from './State';
