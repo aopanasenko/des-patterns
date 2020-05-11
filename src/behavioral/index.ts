@@ -6,3 +6,4 @@ export * from './Memento';
 export * from './Observer';
 export * from './State';
 export * from './Strategy';
+export * from './TemplateMethod';
