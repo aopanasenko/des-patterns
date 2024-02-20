@@ -1,8 +1,8 @@
-abstract class Notifier {
+export abstract class Notifier {
     abstract notify(message: string): void;
 }
 
-class EmailNotifier extends Notifier {
+export class EmailNotifier extends Notifier {
     public notify(message: string) {
         console.log(`Email: ${message}`);
     }
@@ -12,7 +12,7 @@ class EmailNotifier extends Notifier {
 abstract class Decorator extends Notifier {}
 
 // Декоратор отправки сообщения в Slack
-class SlackDecorator extends Decorator {
+export class SlackDecorator extends Decorator {
     private notifier: Notifier;
 
     private notifySlack(message: string) {
@@ -32,7 +32,7 @@ class SlackDecorator extends Decorator {
 
 
 // Декоратор отправки сообщения в Discord
-class DiscordDecorator extends Decorator {
+export class DiscordDecorator extends Decorator {
     private notifier: Notifier;
 
     private notifyDiscord(message: string) {
