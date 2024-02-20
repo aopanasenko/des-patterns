@@ -1,67 +1,63 @@
-/**
- * Декоратор
- */
+abstract class Notifier {
+    abstract notify(message: string): void;
+}
 
-class DataSource {
-    public writeData(data: string): void {}
-    public readData(): void {}
-};
+class EmailNotifier extends Notifier {
+    public notify(message: string) {
+        console.log(`Email: ${message}`);
+    }
+}
 
-class FileDataSource extends DataSource {
-    protected filename: string;
+// Дефолтный декоратор
+abstract class Decorator extends Notifier {}
 
-    constructor(filename: string) {
+// Декоратор отправки сообщения в Slack
+class SlackDecorator extends Decorator {
+    private notifier: Notifier;
+
+    private notifySlack(message: string) {
+        console.log(`Slack: ${message}`);
+    }
+
+    constructor (notifier: Notifier) {
         super();
-        this.filename = filename;
+        this.notifier = notifier;
     }
 
-    public writeData(newFilename: string) {
-        this.filename = newFilename;
-    }
-
-    public readData(): void {
-        console.log(this.filename);
+    public notify(message: string) {
+        this.notifier.notify(message);
+        this.notifySlack(message);
     }
 }
 
-// Общий декоратор
-export class DataSourceDecorator extends DataSource {
-    protected wrapper: DataSource;
 
-    constructor(source: DataSource) {
+// Декоратор отправки сообщения в Discord
+class DiscordDecorator extends Decorator {
+    private notifier: Notifier;
+
+    private notifyDiscord(message: string) {
+        console.log(`Discord: ${message}`);
+    }
+
+    constructor (notifier: Notifier) {
         super();
-        this.wrapper = source;
+        this.notifier = notifier;
     }
 
-
-    public writeData(data: string) {
-        this.wrapper.writeData(data);
-    }
-
-    public readData(): void {
-        this.wrapper.readData();
+    public notify(message: string) {
+        this.notifier.notify(message);
+        this.notifyDiscord(message);
     }
 }
 
-// Конкретный декоратор
-class CompressionDecorator extends DataSourceDecorator {
-    public writeData(data: string) {
-        // 1. Запаковать поданные данные.
-        // 2. Передать запакованные данные в метод writeData
-        // обёрнутого объекта (wrappee).
-    }
+const emailNotifier = new EmailNotifier();
 
-    public readData(): void {
-        // 1. Получить данные из метода readData обёрнутого
-        // объекта (wrappee).
-        // 2. Распаковать их, если они запакованы.
-        // 3. Вернуть результат.
-    }
-}
+const slackDecorator = new SlackDecorator(emailNotifier);
+const discordDecorator = new DiscordDecorator(emailNotifier);
 
-// Использование
-const source = new FileDataSource('myFilename.dat');
-source.writeData('New data');
+slackDecorator.notify('Test notification');
+discordDecorator.notify('Test notification');
 
-const newSource = new CompressionDecorator(source);
-newSource.writeData('Another data');
+const slackDiscordDecorator = new DiscordDecorator(slackDecorator);
+
+slackDiscordDecorator.notify('Test notification');
