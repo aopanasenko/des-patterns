@@ -2,7 +2,7 @@
  * Итератор
  */
 
-interface Iterator<T> {
+export interface Iterator<T> {
     // Получаем текущий элемент
     current(): T;
     // Получаем текущий и переходим к следующему
