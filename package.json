@@ -6,7 +6,7 @@
   "author": "Andrey Opanasenko <email@aopanasenko.ru>",
   "license": "MIT",
   "scripts": {
-    "dts": "tsc"
+    "compile": "tsc"
   },
   "devDependencies": {
     "typescript": "^4.2.2"
