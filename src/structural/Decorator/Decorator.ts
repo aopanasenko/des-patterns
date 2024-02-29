@@ -1,3 +1,7 @@
+/**
+ * В случае если необходимо единичное декорирование единичного объекта, то можно обойтись и интерфейсом
+ */
+
 export abstract class Notifier {
     abstract notify(message: string): void;
 }
