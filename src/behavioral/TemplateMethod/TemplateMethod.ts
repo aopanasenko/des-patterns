@@ -2,24 +2,30 @@
  * Шаблонный метод.
  */
 
-export class DataMiner {
-    public mine(path: string) {
-        const file = this.openFile(path);
-        const rawData = this.extractData(file);
-        this.closeData(file);
+/**
+ * Абстрактный класс, в котором есть шаблонный метод, этапы которого можно переопределять в потомках
+ */
+export abstract class CarBuilder {
+    public buildCar() {
+        this.addEngine();
+        this.addWheels();
+        this.addTransmission();
     }
 
-    public openFile(path: string): string {
-        return 'fileName';
-    }
+    private addWheels() {
+        console.log("Wheels added to the car");
+    };
 
-    public extractData(file: string): void {
-    }
-
-    public closeData(file: string): void {
-    }
+    abstract addEngine();
+    abstract addTransmission();
 }
 
-class PDFDataMiner extends DataMiner {
-    // Тут можно переопределить некоторые методы, если это необходимо
+class TrackBuilder extends CarBuilder {
+    public addEngine() {
+        console.log("V12 engine added to the car");
+    }
+
+    public addTransmission() {
+        console.log("DSG added to the car");
+    }
 }
