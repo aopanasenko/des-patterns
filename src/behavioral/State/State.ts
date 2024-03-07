@@ -2,6 +2,21 @@
  * Состояние.
  */
 
+
+abstract class State {
+    private name: string;
+    private nextState: State;
+
+    constructor(name: string, nextState: State) {
+        this.name = name;
+        this.nextState = nextState;
+    }
+
+    public setNextState() {
+        return this.nextState();
+    }
+}
+
 class StepStatus {
     private name: string;
     private nextStep: object;
