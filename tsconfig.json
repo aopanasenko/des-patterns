@@ -8,8 +8,7 @@
     "strict": true,
     "baseUrl": "./src",
     "esModuleInterop": true,
-    "noEmit": true,
-    "declarationMap": true,
+    "noEmit": false,
     "outDir": "./lib",
   }
 }
