@@ -3,7 +3,7 @@
 .vscode
 
 #Build
-/dist
+/lib
 
 #Dependencies
 /node_modules
