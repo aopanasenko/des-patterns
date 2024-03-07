@@ -3,17 +3,12 @@
     "target": "es5",
     "module": "commonjs",
     "skipLibCheck": true,
+    "jsx": "react",
     "experimentalDecorators": true,
-    "declaration": true,
-    "declarationDir": "./dist",
-    "outDir": "./dist",
     "strict": true,
     "baseUrl": "./src",
     "esModuleInterop": true,
-    "declarationMap": true,
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "noUncheckedIndexedAccess": true ,
-    "allowSyntheticDefaultImports": true
+    "noEmit": false,
+    "outDir": "./lib",
   }
 }

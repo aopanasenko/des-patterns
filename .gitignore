@@ -1,4 +1,9 @@
+#IDE
 .idea
 .vscode
-/dist
+
+#Build
+/lib
+
+#Dependencies
 /node_modules
