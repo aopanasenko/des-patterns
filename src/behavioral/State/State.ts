@@ -5,52 +5,50 @@
 
 abstract class State {
     private name: string;
-    private nextState: State;
+    private nextState: new () => State;
 
-    constructor(name: string, nextState: State) {
+    constructor(name: string, nextState: new () => State) {
         this.name = name;
         this.nextState = nextState;
     }
 
-    public setNextState() {
-        return this.nextState();
+    public getStateName(): string {
+        return this.name;
+    }
+
+    public setNextState(): State {
+        return new this.nextState();
     }
 }
 
-class StepStatus {
-    private name: string;
-    private nextStep: object;
-
-    constructor(name: string, nextStep: object) {
-        this.name = name;
-        this.nextStep = nextStep;
-    }
-
-    public next() {
-        return this.nextStep();
-    }
-}
-
-class Payment extends StepStatus {
+// Каждое состояние само знает какое состояние будет следующим
+class PaymentState extends State {
     constructor() {
-        super('Payment', Delivery);
+        super('Payment', DeliveryState);
     }
 }
 
-class Delivery extends StepStatus {
+class DeliveryState extends State {
     constructor() {
-        super('Delivery', Delivery);
+        super('Delivery', HandingState);
+    }
+}
+
+class HandingState extends State {
+    constructor() {
+        super('Handing', HandingState);
     }
 }
 
 export class Order {
-    private state: Payment | Delivery;
+    private state: State;
 
     constructor() {
-        this.state = new Payment();
+        this.state = new PaymentState();
     }
 
     nextState() {
-        this.state = this.state.next();
+        this.state = this.state.setNextState();
+        console.log(`Move to the next state: ${this.state.getStateName()}`);
     }
 }
