@@ -6,7 +6,7 @@
   "author": "Andrey Opanasenko <aopanasenko@dclab.local>",
   "license": "MIT",
   "scripts": {
-    "dts": "tsc --p tsconfig.dts.json --declaration --emitDeclarationOnly --outDir ./lib/"
+    "compile": "tsc"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
