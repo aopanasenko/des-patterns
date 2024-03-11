@@ -3,6 +3,11 @@
  */
 
 
+/**
+ * Реализация при которой каждое состояние знает о том, в какое следующее состояние переходить.
+ * Инициатор смены состояния - контекст. Он вызывает метод смены состояния из экземпляра State.
+ * Состояния создаются по мере их необходимости и не хранятся в памяти все время.
+ */
 abstract class State {
     private name: string;
     private nextState: new () => State;
@@ -52,3 +57,4 @@ export class Order {
         console.log(`Move to the next state: ${this.state.getStateName()}`);
     }
 }
+
